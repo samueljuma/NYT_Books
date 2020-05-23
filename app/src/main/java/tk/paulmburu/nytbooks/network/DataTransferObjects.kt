@@ -29,14 +29,14 @@ data class NetworkBookContainer(
     val results: List<NetworkBook>
 )
 
-fun NetworkBookContainer.asDatabaseBookModel(): Array<Book>{
+fun NetworkBookContainer.asDatabaseBookModel(): List<Book>{
     return results.map {
         Book(
             title = it.title,
             author = it.author,
             description = it.description
         )
-    }.toTypedArray()
+    }
 }
 
 
