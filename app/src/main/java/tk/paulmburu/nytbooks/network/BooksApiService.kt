@@ -1,6 +1,9 @@
-package tk.paulmburu.nytbooks.utils
+package tk.paulmburu.nytbooks.network
 
-/*   Created by Paul Mburu on 5/23/20.
+import retrofit2.http.GET
+import tk.paulmburu.nytbooks.BuildConfig
+
+/*   Created by Paul Mburu on 5/24/20.
  *
  *   Copyright 2020 Paul Mburu
  * 
@@ -14,11 +17,9 @@ package tk.paulmburu.nytbooks.utils
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-object Constants {
-    const val BASE_URL = "https://api.nytimes.com/"
+interface BooksApiService {
 
-    //THEME VALUES
-    const val THEME_LIGHT = "Light"
-    const val THEME_DARK = "Dark"
-    const val THEME_SYSTEM = "System"
+    @GET("svc/books/v3/lists/best-sellers/history.json?api_key=${BuildConfig.NYT_BOOKS_API_KEY}")
+    suspend fun getPopularMovies(): NetworkBookContainer
+
 }
