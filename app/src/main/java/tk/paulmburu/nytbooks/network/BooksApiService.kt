@@ -20,6 +20,6 @@ import tk.paulmburu.nytbooks.BuildConfig
 interface BooksApiService {
 
     @GET("svc/books/v3/lists/best-sellers/history.json?api_key=${BuildConfig.NYT_BOOKS_API_KEY}")
-    suspend fun getPopularMovies(): NetworkBookContainer
+    suspend fun getAvailableBooks(): NetworkBookContainer
 
 }
