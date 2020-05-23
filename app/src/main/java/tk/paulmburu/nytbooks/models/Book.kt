@@ -20,6 +20,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "Books")
 data class Book(
+    @PrimaryKey
     val title: String,
     val author: String,
     val description: String
