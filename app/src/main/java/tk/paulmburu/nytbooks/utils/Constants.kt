@@ -16,6 +16,7 @@ package tk.paulmburu.nytbooks.utils
  */
 object Constants {
     const val BASE_URL = "https://api.nytimes.com/"
+    const val APP_DATABASE_NAME = "books_db"
 
     //THEME VALUES
     const val THEME_LIGHT = "Light"
