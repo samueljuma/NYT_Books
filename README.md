@@ -32,7 +32,7 @@
 [12]: https://material.io/develop/android/docs/getting-started/
 
 ## Screenshots
-<image src="screenshots/1.jpeg" width="200">
+<image src="screenshots/1.jpeg" width="300">
 
 ## [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 ```
