@@ -20,8 +20,8 @@ import tk.paulmburu.nytbooks.models.Book
 @JsonClass(generateAdapter = true)
 data class NetworkBook(
     val title: String,
-    val author: String,
-    val description: String
+    val author: String?,
+    val description: String?
 )
 
 @JsonClass(generateAdapter = true)
