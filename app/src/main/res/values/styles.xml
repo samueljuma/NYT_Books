@@ -14,4 +14,21 @@
         <item name="cardCornerRadius">@dimen/book_card_corner_radius</item>
     </style>
 
+    <style name="Widget.NYTBooks" parent="@android:style/Widget.Material" />
+
+    <style name="Widget.NYTBooks.MultilineBody">
+        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:textColor">?android:textColorSecondary</item>
+    </style>
+
+    <style name="TextAppearance.NYTBooks.NoticeBody" parent="@style/Widget.NYTBooks.MultilineBody">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextAppearance.NYTBooks.H1" parent="@style/TextAppearance.MaterialComponents.Headline5">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">@dimen/text_size_h1</item>
+        <item name="fontFamily">sans-serif-medium</item>
+    </style>
+
 </resources>
