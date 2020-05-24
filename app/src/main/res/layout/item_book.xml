@@ -3,6 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <data>
+        <variable
+            name="book"
+            type="tk.paulmburu.nytbooks.models.Book" />
+
+        <variable
+            name="clicklistener"
+            type="tk.paulmburu.nytbooks.ui.OnClickListener" />
+    </data>
+
     <com.google.android.material.card.MaterialCardView
         style="@style/Widget.NYTBooks.Book.Card"
         android:layout_width="match_parent"
@@ -23,6 +33,7 @@
             tools:ignore="RtlCompat,RtlSymmetry">
 
             <TextView
+                app:setTextData="@{book.title}"
                 android:id="@+id/book_title_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -60,6 +71,7 @@
                 tools:text="Author:" />
 
             <TextView
+                app:setTextData="@{book.author}"
                 android:id="@+id/author_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -81,6 +93,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
 
             <TextView
+                app:setTextData="@{book.description}"
                 android:id="@+id/description_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
