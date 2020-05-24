@@ -22,6 +22,6 @@ import androidx.room.PrimaryKey
 data class Book(
     @PrimaryKey
     val title: String,
-    val author: String,
-    val description: String
+    val author: String?,
+    val description: String?
 )
