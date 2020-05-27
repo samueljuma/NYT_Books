@@ -1,4 +1,6 @@
 # NYT_Books
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/85e54b270b1149478f21034d5a7ba28d)](https://app.codacy.com/manual/Paulmburu/NYT_Books?utm_source=github.com&utm_medium=referral&utm_content=Paulmburu/NYT_Books&utm_campaign=Badge_Grade_Dashboard)[![BCH compliance](https://bettercodehub.com/edge/badge/Paulmburu/NYT-Books?branch=master&token=3667afebba4d8f08f0f87d49af3fe9766b2de016)](https://bettercodehub.com/)
+
  An app that fetches [New York Times best sellers books](https://developer.nytimes.com/docs/books-product/1/routes/lists/best-sellers/history.json/get) while leveraging the power and simplicity of [Koin](https://doc.insert-koin.io/#/introduction) for dependency injection.
  
 ## Techstack 
@@ -34,7 +36,6 @@
 ## Screenshots
 <image src="screenshots/1.jpeg" width="300">
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/85e54b270b1149478f21034d5a7ba28d)](https://app.codacy.com/manual/Paulmburu/NYT_Books?utm_source=github.com&utm_medium=referral&utm_content=Paulmburu/NYT_Books&utm_campaign=Badge_Grade_Dashboard)
 ## [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 ```
    Copyright 2020 Paul Mburu
