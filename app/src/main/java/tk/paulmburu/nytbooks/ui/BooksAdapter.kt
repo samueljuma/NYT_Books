@@ -1,14 +1,16 @@
 package tk.paulmburu.nytbooks.ui
 
-import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
+import androidx.constraintlayout.widget.Group
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import tk.paulmburu.nytbooks.R
 import tk.paulmburu.nytbooks.databinding.ItemBookBinding
 import tk.paulmburu.nytbooks.models.Book
+import tk.paulmburu.nytbooks.utils.animation.Animations
 
 /*   Created by Paul Mburu on 5/24/20.
  *
@@ -53,7 +55,23 @@ class BooksAdapter(val onClickListener: OnClickListener) :  RecyclerView.Adapter
         holder.viewDataBinding.also {
             it.book = books.get(position)
             it.clicklistener = onClickListener
+
+            it.expandIcon.setOnClickListener {v ->
+                val show = toggleLayout(!books.get(position).isExpanded, v, holder.viewDataBinding.descriptionGroup)
+                books.get(position).isExpanded = show
+            }
         }
+    }
+
+    private fun toggleLayout(isExpanded: Boolean, v: View, group: Group): Boolean {
+        Animations.toggleArrow(v, isExpanded)
+        if (isExpanded) {
+            Animations.expand(group)
+        } else {
+            Animations.collapse(group)
+        }
+
+        return isExpanded
     }
 }
 

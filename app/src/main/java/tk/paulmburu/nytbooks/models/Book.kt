@@ -23,5 +23,6 @@ data class Book(
     @PrimaryKey
     val title: String,
     val author: String?,
-    val description: String?
+    val description: String?,
+    var isExpanded: Boolean = false
 )

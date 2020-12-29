@@ -85,6 +85,13 @@
                 app:layout_constraintStart_toEndOf="@+id/textView"
                 app:layout_constraintTop_toTopOf="@+id/textView" />
 
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/description_group"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="textView3,description_id"/>
+
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
