@@ -35,6 +35,7 @@
 
 ## Screenshots
 <image src="screenshots/1.jpeg" width="300">
+<image src="art/app.gif" width="300">
 
 ## [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 ```
