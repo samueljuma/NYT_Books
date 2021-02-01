@@ -1,10 +1,9 @@
-package tk.paulmburu.nytbooks.interactors
+package tk.paulmburu.nytbooks.storage
 
-import tk.paulmburu.nytbooks.models.Book
-import tk.paulmburu.nytbooks.repositories.BooksRepository
-import tk.paulmburu.nytbooks.utils.ResultState
+import android.content.Context
+import tk.paulmburu.nytbooks.models.Theme
 
-/*   Created by Paul Mburu on 5/24/20.
+/*   Created by Paul Mburu on 5/26/20.
  *
  *   Copyright 2020 Paul Mburu
  * 
@@ -18,9 +17,18 @@ import tk.paulmburu.nytbooks.utils.ResultState
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-class GetAvailableBooksUseCase(private val booksRepository: BooksRepository) {
+class SharedPreferencesStorage(context: Context) : Storage {
 
-    suspend operator fun invoke(): ResultState<List<Book>>{
-        return booksRepository.getAvailableBooks()
+    private val sharedPreferences = context.getSharedPreferences("ThemePrefs", Context.MODE_PRIVATE)
+
+    override fun setTheme(key: String, value: String) {
+        with(sharedPreferences.edit()){
+            putString(key,value)
+            apply()
+        }
+    }
+
+    override fun selectedTheme(): String {
+        return sharedPreferences.getString("pref_dark_mode", Theme.SYSTEM.storageKey)!!
     }
 }

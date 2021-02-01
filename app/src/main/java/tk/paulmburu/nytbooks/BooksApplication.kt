@@ -4,10 +4,7 @@ import android.app.Application
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
-import tk.paulmburu.nytbooks.di.data
-import tk.paulmburu.nytbooks.di.domain
-import tk.paulmburu.nytbooks.di.network
-import tk.paulmburu.nytbooks.di.viewModel
+import tk.paulmburu.nytbooks.di.*
 
 /*   Created by Paul Mburu on 5/23/20.
  *
@@ -31,7 +28,7 @@ class BooksApplication : Application() {
         startKoin {
             androidLogger()
             androidContext(this@BooksApplication)
-            modules(network, data, viewModel, domain)
+            modules(network, data, viewModel, domain, storage)
         }
     }
 }

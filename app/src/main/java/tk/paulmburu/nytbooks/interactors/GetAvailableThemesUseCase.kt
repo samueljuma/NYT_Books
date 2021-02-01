@@ -1,10 +1,11 @@
 package tk.paulmburu.nytbooks.interactors
 
-import tk.paulmburu.nytbooks.models.Book
-import tk.paulmburu.nytbooks.repositories.BooksRepository
-import tk.paulmburu.nytbooks.utils.ResultState
+import androidx.core.os.BuildCompat
+import tk.paulmburu.nytbooks.models.Theme
+import tk.paulmburu.nytbooks.utils.SyncScheduler
+import tk.paulmburu.nytbooks.utils.UseCase
 
-/*   Created by Paul Mburu on 5/24/20.
+/*   Created by Paul Mburu on 5/26/20.
  *
  *   Copyright 2020 Paul Mburu
  * 
@@ -18,9 +19,17 @@ import tk.paulmburu.nytbooks.utils.ResultState
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-class GetAvailableBooksUseCase(private val booksRepository: BooksRepository) {
+class GetAvailableThemesUseCase(): UseCase<Unit, List<Theme>>() {
+    init {
+        taskScheduler = SyncScheduler
+    }
 
-    suspend operator fun invoke(): ResultState<List<Book>>{
-        return booksRepository.getAvailableBooks()
+    override fun execute(parameters: Unit): List<Theme> = when {
+        BuildCompat.isAtLeastQ() -> {
+            listOf(Theme.LIGHT, Theme.DARK, Theme.SYSTEM)
+        }
+        else -> {
+            listOf(Theme.LIGHT, Theme.DARK, Theme.BATTERY_SAVER)
+        }
     }
 }

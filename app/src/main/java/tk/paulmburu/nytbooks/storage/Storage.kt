@@ -1,10 +1,6 @@
-package tk.paulmburu.nytbooks.interactors
+package tk.paulmburu.nytbooks.storage
 
-import tk.paulmburu.nytbooks.models.Book
-import tk.paulmburu.nytbooks.repositories.BooksRepository
-import tk.paulmburu.nytbooks.utils.ResultState
-
-/*   Created by Paul Mburu on 5/24/20.
+/*   Created by Paul Mburu on 5/26/20.
  *
  *   Copyright 2020 Paul Mburu
  * 
@@ -18,9 +14,7 @@ import tk.paulmburu.nytbooks.utils.ResultState
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-class GetAvailableBooksUseCase(private val booksRepository: BooksRepository) {
-
-    suspend operator fun invoke(): ResultState<List<Book>>{
-        return booksRepository.getAvailableBooks()
-    }
+interface Storage {
+    fun setTheme(key: String, value: String)
+    fun selectedTheme() : String
 }

@@ -2,17 +2,22 @@ package tk.paulmburu.nytbooks.di
 
 
 import androidx.room.Room
-import androidx.room.RoomDatabase
+import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
-import tk.paulmburu.nytbooks.R
 import tk.paulmburu.nytbooks.database.BooksDao
 import tk.paulmburu.nytbooks.database.BooksDatabase
 import tk.paulmburu.nytbooks.interactors.GetAvailableBooksUseCase
+import tk.paulmburu.nytbooks.interactors.GetAvailableThemesUseCase
+import tk.paulmburu.nytbooks.interactors.GetThemeUseCase
+import tk.paulmburu.nytbooks.interactors.SetThemeUseCase
 import tk.paulmburu.nytbooks.network.ApiClient
 import tk.paulmburu.nytbooks.repositories.BooksRepository
-import tk.paulmburu.nytbooks.ui.MainViewModel
+import tk.paulmburu.nytbooks.storage.SharedPreferencesStorage
+import tk.paulmburu.nytbooks.storage.Storage
+import tk.paulmburu.nytbooks.ui.main.MainViewModel
+import tk.paulmburu.nytbooks.ui.themeSettings.ThemeSettingsViewModel
 import tk.paulmburu.nytbooks.utils.Constants
 
 /*   Created by Paul Mburu on 5/24/20.
@@ -52,10 +57,27 @@ val data = module {
 }
 
 val viewModel = module {
-    viewModel { MainViewModel(getAvailableBooksUseCase = get()) }
+    viewModel {
+        MainViewModel(
+            getAvailableBooksUseCase = get(),
+            getAvailableThemesUseCase = get(),
+            getThemeUseCase = get(),
+            setThemeUseCase = get()
+
+        )
+    }
 }
 
 val domain = module {
+
     factory { GetAvailableBooksUseCase(booksRepository = get()) }
+    factory { GetAvailableThemesUseCase() }
+    factory { GetThemeUseCase(preferenceStorage = get()) }
+    factory { SetThemeUseCase(preferenceStorage = get()) }
 }
 
+val storage = module {
+    fun provideStorage(preferencesStorage: SharedPreferencesStorage): Storage = preferencesStorage
+    single { SharedPreferencesStorage(androidContext()) }
+    single { provideStorage(preferencesStorage = get()) }
+}

@@ -1,6 +1,5 @@
-package tk.paulmburu.nytbooks.ui
+package tk.paulmburu.nytbooks.ui.main
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes

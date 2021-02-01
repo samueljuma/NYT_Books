@@ -1,8 +1,4 @@
-package tk.paulmburu.nytbooks.interactors
-
-import tk.paulmburu.nytbooks.models.Book
-import tk.paulmburu.nytbooks.repositories.BooksRepository
-import tk.paulmburu.nytbooks.utils.ResultState
+package tk.paulmburu.nytbooks.models
 
 /*   Created by Paul Mburu on 5/24/20.
  *
@@ -18,9 +14,19 @@ import tk.paulmburu.nytbooks.utils.ResultState
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-class GetAvailableBooksUseCase(private val booksRepository: BooksRepository) {
+/**
+ * Represents the available UI themes for the application
+ */
+enum class Theme(val storageKey: String) {
+    LIGHT("light"),
+    DARK("dark"),
+    SYSTEM("system"),
+    BATTERY_SAVER("battery_saver")
+}
 
-    suspend operator fun invoke(): ResultState<List<Book>>{
-        return booksRepository.getAvailableBooks()
-    }
+/**
+ * Returns the matching [Theme] for the given [storageKey] value.
+ */
+fun themeFromStorageKey(storageKey: String): Theme {
+    return Theme.values().first { it.storageKey == storageKey }
 }

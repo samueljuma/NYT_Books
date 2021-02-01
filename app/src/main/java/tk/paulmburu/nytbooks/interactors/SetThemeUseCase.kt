@@ -1,10 +1,10 @@
 package tk.paulmburu.nytbooks.interactors
 
-import tk.paulmburu.nytbooks.models.Book
-import tk.paulmburu.nytbooks.repositories.BooksRepository
-import tk.paulmburu.nytbooks.utils.ResultState
+import tk.paulmburu.nytbooks.models.Theme
+import tk.paulmburu.nytbooks.storage.Storage
+import tk.paulmburu.nytbooks.utils.UseCase
 
-/*   Created by Paul Mburu on 5/24/20.
+/*   Created by Paul Mburu on 5/26/20.
  *
  *   Copyright 2020 Paul Mburu
  * 
@@ -18,9 +18,11 @@ import tk.paulmburu.nytbooks.utils.ResultState
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-class GetAvailableBooksUseCase(private val booksRepository: BooksRepository) {
 
-    suspend operator fun invoke(): ResultState<List<Book>>{
-        return booksRepository.getAvailableBooks()
+open class SetThemeUseCase(
+    private val preferenceStorage: Storage
+) : UseCase<Theme, Unit>() {
+    override fun execute(parameters: Theme) {
+        preferenceStorage.setTheme("pref_dark_mode",parameters.storageKey)
     }
 }

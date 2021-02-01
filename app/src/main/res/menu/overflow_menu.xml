@@ -4,8 +4,8 @@
 
     <item
         android:title="@string/configure_brightness"
-        android:id="@+id/menu_item_calendar"
-        android:icon="@drawable/ic_baseline_brightness_4_24"
+        android:id="@+id/menu_item_theme"
+        android:icon="@drawable/ic_baseline_brightness_4_24_white"
         app:showAsAction="always" />
 
 </menu>

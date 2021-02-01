@@ -1,13 +1,16 @@
-package tk.paulmburu.nytbooks.ui
+package tk.paulmburu.nytbooks.ui.main
 
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import tk.paulmburu.nytbooks.BaseActivity
 import tk.paulmburu.nytbooks.R
 import tk.paulmburu.nytbooks.models.Book
+import tk.paulmburu.nytbooks.ui.themeSettings.ThemeSettingDialogFragment
 import tk.paulmburu.nytbooks.utils.Success
 
 /*   Created by Paul Mburu on 5/23/20.
@@ -35,9 +38,10 @@ class MainActivity : BaseActivity<List<Book>>() {
         setContentView(R.layout.activity_main)
         observeNetworkChanges()
 
-        viewModelAdapter = BooksAdapter(OnClickListener {
-            Log.d("Book Clicked","${it}")
-        })
+        viewModelAdapter =
+            BooksAdapter(OnClickListener {
+                Log.d("Book Clicked", "${it}")
+            })
 
         findViewById<RecyclerView>(R.id.recyclerViewBooks).apply {
             adapter = viewModelAdapter
@@ -72,6 +76,21 @@ class MainActivity : BaseActivity<List<Book>>() {
         super.showOnSuccess(result)
         val availableMovies = result.data
         viewModelAdapter?.books = availableMovies
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.overflow_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId){
+            R.id.menu_item_theme -> {
+                ThemeSettingDialogFragment.newInstance()
+                    .show(supportFragmentManager, null)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)}
     }
 }
 
