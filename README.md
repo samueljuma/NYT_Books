@@ -34,8 +34,7 @@
 [12]: https://material.io/develop/android/docs/getting-started/
 
 ## Screenshots
-<image src="screenshots/1.jpeg" width="300">
-<image src="art/app.gif" width="300">
+<image src="screenshots/1.jpeg" height="500" width="250">[ ]<image src="art/app.gif" height="500" width="250">
 
 ## [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 ```
